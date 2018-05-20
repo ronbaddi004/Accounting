@@ -1,0 +1,210 @@
+<!DOCTYPE html> {% load static %}
+<!-- Created by pdf2htmlEX (https://github.com/coolwanglu/pdf2htmlex) -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="{% static 'css/base.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/fancy.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main (2).css' %}" />
+    <script src="{% static 'js/compatibility.min.js' %}"></script>
+    <script src="{% static 'js/theViewer.min.js' %}"></script>
+    <script>
+        try {
+            theViewer.defaultViewer = new theViewer.Viewer({});
+        } catch (e) { }
+    </script>
+    <title></title>
+</head>
+
+<body>
+    <div id="sidebar">
+        <div id="outline">
+        </div>
+    </div>
+    <div id="page-container">
+        <div id="pf1" class="pf w0 h0" data-page-no="1">
+            <div class="pc pc1 w0 h0">
+                <img class="bi x0 y0 w1 h1" alt="" src="{% static 'images/bg2.png' %}" />
+                <div class="t m0 x1 h2 y1 ff1 fs0 fc0 sc0 ls0 ws0">       !!Shree Ganeshay Namah!!</div>
+                <div class="t m0 x2 h2 y2 ff1 fs0 fc0 sc0 ls0 ws0">TAX INVOICE</div>
+                <div class="c x3 y3 w2 h3">
+                    <div class="t m0 x4 h4 y4 ff2 fs1 fc0 sc0 ls0 ws0">Invoice No.</div>
+                </div>
+                <div class="c x0 y5 w3 h5">
+                    <div class="t m0 x4 h6 y6 ff1 fs2 fc0 sc0 ls0 ws0">{{bill.organization.legal_name}}</div>
+                    <div class="t m0 x5 h7 y7 ff2 fs3 fc0 sc0 ls0 ws0">{{bill.organization.display_name}}</div>
+                </div>
+                <div class="c x3 y8 w2 h8">
+                    <div class="t m0 x4 h7 y9 ff2 fs3 fc0 sc0 ls0 ws0">{{bill.number}}</div>
+                </div>
+                <div class="c x6 ya w4 h9">
+                    <div class="t m0 x4 ha yb ff2 fs4 fc0 sc0 ls0 ws0">Issued Date:</div>
+                    <div class="t m0 x4 hb yc ff1 fs3 fc0 sc0 ls0 ws0">{{bill.date_issued}}</div>
+                </div>
+                <div class="c x3 yd w2 hc">
+                    <div class="t m0 x4 h4 ye ff2 fs1 fc0 sc0 ls0 ws0">Delivery Note</div>
+                </div>
+                <div class="c x6 yd w4 hc">
+                    <div class="t m0 x4 ha yf ff2 fs4 fc0 sc0 ls0 ws0">Mode/Terms of Payment</div>
+                    <div class="t m0 x4 ha y10 ff2 fs4 fc0 sc0 ls0 ws0">Cheque/Cash</div>
+                </div>
+                <div class="c x0 y11 w3 hd">
+                    <div class="t m0 x4 he y12 ff2 fs5 fc0 sc0 ls0 ws0">{{bill.organization.address_line_1}}</div>
+                    <div class="t m0 x4 he y13 ff2 fs5 fc0 sc0 ls0 ws0">{{bill.organization.address_line_2}}</div>
+                    <div class="t m0 x4 he y14 ff2 fs5 fc0 sc0 ls0 ws0">{{bill.organization.city}} - {{bill.organization.postal_code}}</div>
+                    <div class="t m0 x4 he y15 ff2 fs5 fc0 sc0 ls0 ws0"></div>
+                    <div class="t m0 x4 ha y16 ff2 fs4 fc0 sc0 ls0 ws0">Mobile No.: </div>
+                </div>
+                <div class="c x3 y11 w2 hf">
+                    <div class="t m0 x4 h4 y17 ff2 fs1 fc0 sc0 ls0 ws0">Supplier&apos;s Ref.</div>
+                </div>
+                <div class="c x6 y11 w4 hf">
+                    <div class="t m0 x4 ha y18 ff2 fs4 fc0 sc0 ls0 ws0">Other Reference(s)</div>
+                </div>
+                <div class="c x0 y19 w3 h10">
+                    <div class="t m0 x4 ha y1a ff2 fs4 fc0 sc0 ls0 ws0">GST No.: </div>
+                </div>
+                <div class="c x3 y1b w2 h11">
+                    <div class="t m0 x4 h4 y1c ff2 fs1 fc0 sc0 ls0 ws0">Buyer&apos;s Order No.</div>
+                </div>
+                <div class="c x6 y1b w4 h11">
+                    <div class="t m0 x4 ha y1d ff2 fs4 fc0 sc0 ls0 ws0">Due Date:</div>
+                    <div class="t m0 x4 h12 y1e ff1 fs5 fc0 sc0 ls0 ws0">{{bill.date_dued}}</div>
+                </div>
+                <div class="c x3 y1f w2 h13">
+                    <div class="t m0 x4 h4 y20 ff2 fs1 fc0 sc0 ls0 ws0">Dispatch Document No.</div>
+                </div>
+                <div class="c x3 y21 w2 h14">
+                    <div class="t m0 x4 hb y22 ff1 fs3 fc1 sc0 ls0 ws0">{{bill.number}}</div>
+                </div>
+                <div class="c x0 y23 w3 h15">
+                    <div class="t m0 x4 hb y24 ff1 fs3 fc0 sc0 ls0 ws0">Buyer</div>
+                    <div class="t m0 x4 h6 y25 ff1 fs2 fc1 sc0 ls0 ws0">Decent Electricals</div>
+                    <div class="t m0 x4 hb y26 ff1 fs3 fc1 sc0 ls0 ws0">GST No.:</div>
+                </div>
+                <div class="c x3 y27 w5 h16">
+                    <div class="t m0 x4 ha y28 ff2 fs4 fc0 sc0 ls0 ws0">Terms of Delivery:</div>
+                </div>
+                <div class="c x0 y29 w6 h17">
+                    <div class="t m0 x4 h12 y2a ff1 fs5 fc0 sc0 ls0 ws0">Sr.</div>
+                    <div class="t m0 x4 h12 y2b ff1 fs5 fc0 sc0 ls0 ws0">No.</div>
+                </div>
+                <div class="c x7 y29 w7 h17">
+                    <div class="t m0 x8 h12 y2c ff1 fs5 fc0 sc0 ls0 ws0">Description of Goods</div>
+                </div>
+                <div class="c x9 y29 w8 h17">
+                    <div class="t m0 xa h18 y2d ff1 fs1 fc0 sc0 ls0 ws0">per</div>
+                </div>
+                <div class="c x6 y29 w9 h17">
+                    <div class="t m0 x4 h18 y2d ff1 fs1 fc0 sc0 ls0 ws0">Quantity</div>
+                </div>
+                <div class="c xb y29 wa h17">
+                    <div class="t m0 xc h18 y2d ff1 fs1 fc0 sc0 ls0 ws0">Rate</div>
+                </div>
+                <div class="c xd y29 wb h17">
+                    <div class="t m0 x0 h18 y2d ff1 fs1 fc0 sc0 ls0 ws0">Amount</div>
+                </div>
+                <div class="c x0 y2e w6 h19">
+                    <div class="t m0 x5 he y2f ff2 fs5 fc0 sc0 ls0 ws0">1</div>
+                    <div class="t m0 x5 he y30 ff2 fs5 fc0 sc0 ls0 ws0">2</div>
+                    <div class="t m0 x5 he y31 ff2 fs5 fc0 sc0 ls0 ws0">3</div>
+                    <div class="t m0 x5 he y32 ff2 fs5 fc0 sc0 ls0 ws0">4</div>
+                </div>
+                <div class="c x7 y2e w7 h19">
+                    <div class="t m0 x4 ha y33 ff2 fs4 fc0 sc0 ls0 ws0">HikVision Ip CCTV 1229-I3 </div>
+                    <div class="t m0 x4 ha y34 ff2 fs4 fc0 sc0 ls0 ws0">7104 NI E1 NVR HikVision</div>
+                    <div class="t m0 x4 ha y35 ff2 fs4 fc0 sc0 ls0 ws0">PoE Gigabit Ethernet Switch GS305p Netgear </div>
+                    <div class="t m0 x4 ha y36 ff2 fs4 fc0 sc0 ls0 ws0">HDD 2TB WD</div>
+                </div>
+                <div class="c x9 y2e w8 h19">
+                    <div class="t m0 x5 h4 y37 ff2 fs1 fc0 sc0 ls0 ws0">1 nos</div>
+                    <div class="t m0 x5 h4 y38 ff2 fs1 fc0 sc0 ls0 ws0">1 nos</div>
+                    <div class="t m0 x5 h4 y39 ff2 fs1 fc0 sc0 ls0 ws0">1 nos</div>
+                    <div class="t m0 x5 h4 y3a ff2 fs1 fc0 sc0 ls0 ws0">1 nos</div>
+                </div>
+                <div class="c x6 y2e w9 h19">
+                    <div class="t m0 xa h4 y37 ff2 fs1 fc0 sc0 ls0 ws0">4</div>
+                    <div class="t m0 xa h4 y38 ff2 fs1 fc0 sc0 ls0 ws0">1</div>
+                    <div class="t m0 xa h4 y39 ff2 fs1 fc0 sc0 ls0 ws0">1</div>
+                    <div class="t m0 xa h4 y3a ff2 fs1 fc0 sc0 ls0 ws0">1</div>
+                </div>
+                <div class="c xb y2e wa h19">
+                    <div class="t m0 xe h4 y37 ff2 fs1 fc0 sc0 ls0 ws0">3150.00</div>
+                    <div class="t m0 xe h4 y38 ff2 fs1 fc0 sc0 ls0 ws0">3800.00</div>
+                    <div class="t m0 xe h4 y39 ff2 fs1 fc0 sc0 ls0 ws0">3500.00</div>
+                    <div class="t m0 xe h4 y3a ff2 fs1 fc0 sc0 ls0 ws0">4150.00</div>
+                </div>
+                <div class="c xd y2e wb h19">
+                    <div class="t m0 xf he y2f ff2 fs5 fc0 sc0 ls0 ws0">12600.00</div>
+                    <div class="t m0 x5 he y30 ff2 fs5 fc0 sc0 ls0 ws0">3800.00</div>
+                    <div class="t m0 x5 he y31 ff2 fs5 fc0 sc0 ls0 ws0">3500.00</div>
+                    <div class="t m0 x5 he y32 ff2 fs5 fc0 sc0 ls0 ws0">4150.00</div>
+                </div>
+                <div class="c x7 y3b w7 h1a">
+                    <div class="t m0 x10 h1b y3c ff1 fs6 fc0 sc0 ls0 ws0">TOTAL</div>
+                </div>
+                <div class="c xd y3b wb h1a">
+                    <div class="t m0 xf h12 y3d ff1 fs5 fc0 sc0 ls0 ws0">24050.00</div>
+                </div>
+                <div class="c x7 y3e w7 h1c">
+                    <div class="t m0 x11 hb y3f ff1 fs3 fc0 sc0 ls0 ws0">SGST</div>
+                </div>
+                <div class="c x9 y3e wc h1c">
+                    <div class="t m0 x12 h18 y40 ff1 fs1 fc0 sc0 ls0 ws0">9.00</div>
+                </div>
+                <div class="c xd y3e wb h1c">
+                    <div class="t m0 x5 h12 y41 ff1 fs5 fc0 sc0 ls0 ws0">2164.50</div>
+                </div>
+                <div class="c x7 y42 w7 h1d">
+                    <div class="t m0 x11 hb y43 ff1 fs3 fc0 sc0 ls0 ws0">CGST</div>
+                </div>
+                <div class="c x9 y42 wc h1d">
+                    <div class="t m0 x12 h18 y44 ff1 fs1 fc0 sc0 ls0 ws0">9.00</div>
+                </div>
+                <div class="c xd y42 wb h1d">
+                    <div class="t m0 x5 h12 y45 ff1 fs5 fc0 sc0 ls0 ws0">2164.50</div>
+                </div>
+                <div class="c x7 y46 w7 h1e">
+                    <div class="t m0 x13 h1b y47 ff1 fs6 fc0 sc0 ls0 ws0">Grand Total</div>
+                </div>
+                <div class="c xd y46 wb h1e">
+                    <div class="t m0 xe h1f y48 ff1 fs4 fc0 sc0 ls0 ws0">28379.00</div>
+                </div>
+                <div class="c x0 y49 wd h20">
+                    <div class="t m0 x4 ha y4a ff2 fs4 fc0 sc0 ls0 ws0">Amount Chargeable (in word)</div>
+                    <div class="t m0 x4 ha y4b ff2 fs4 fc0 sc0 ls0 ws0">Indian Rupees Twenty Eight Thousand Three Hundred Seventy Nine Only</div>
+                </div>
+                <div class="c x0 y4c wd h21">
+                    <div class="t m0 x4 ha y4d ff2 fs4 fc0 sc0 ls0 ws0">1)</div>
+                </div>
+                <div class="c x0 y4e wd h22">
+                    <div class="t m0 x4 ha y4f ff2 fs4 fc0 sc0 ls0 ws0">Terms &amp; Conditions :</div>
+                    <div class="t m0 x4 ha y50 ff2 fs4 fc0 sc0 ls0 ws0">1) All have 1 year warranty.
+                        <span class="_ _0"> </span>
+                        <span class="_ _1"></span></div>
+                    <div class="t m0 x4 ha y51 ff2 fs4 fc0 sc0 ls0 ws0">2) Burnt/Water/Physical damage are not cover under Warranty.
+                        <span class="_ _0"> </span>
+                        <span class="_ _2"></span></div>
+                </div>
+                <div class="c x0 y52 w3 h22">
+                    <div class="t m0 x4 h23 y53 ff3 fs4 fc0 sc0 ls0 ws0">Customer&apos; s Seal and signature</div>
+                </div>
+                <div class="c x3 y52 w5 h22">
+                    <div class="t m1 x14 h23 y54 ff3 fs4 fc0 sc0 ls0 ws0">For MD&apos;$ SOLUTIONS</div>
+                    <div class="t m2 x15 h23 y55 ff3 fs4 fc0 sc0 ls0 ws0">Authorised Signatory</div>
+                </div>
+                <div class="t m3 x16 h23 y56 ff3 fs4 fc0 sc0 ls0 ws0">SUBJECT TO SURAT JURISDICTION</div>
+                <div class="t m0 x17 h23 y57 ff3 fs4 fc0 sc0 ls0 ws0">This is Computer Generated Invoice</div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+    </div>
+    <div class="loading-indicator">
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load nav bootstrap3 %}
+
+{% block maincontent %}
+    {% block nav %}
+    <div class="wrapper" style="height: auto; min-height: 100%;">
+    
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini">
+                    <b>BETA</b>
+                </span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">
+                    <b>BETA</b>ccounting</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+    
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+                        {% if user.is_authenticated %}
+                            <li class="dropdown navbar-right" style="margin-right:3px;">
+                                <a class="dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ user.username }} <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">My account</a></li>
+                                    <li><a class="dropdown-item" href="#">Change password</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Log out</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                        {% url 'connect:getting-started' as getting_started_url %}
+                        <li class="navbar-nav navbar-right" style="margin-right:0px;">
+                            <a href="{{ getting_started_url }}">
+                                <span>Getting started</span>
+                            </a>
+                        </li>
+                        <!-- Notifications: style can be found in dropdown.less -->
+    
+                        <!-- Tasks: style can be found in dropdown.less -->
+    
+                        <!-- User Account: style can be found in dropdown.less -->
+    
+                        <!-- Control Sidebar Toggle Button -->
+    
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar" style="height: auto;">
+                <!-- Sidebar user panel -->
+    
+                <!-- search form -->
+    
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu tree tab-menu" data-widget="tree">
+                    {% url 'books:dashboard' as books_dashboard_url %}
+                    <li class="{% if active_tab == 'dashboard' %} active{% endif %}">
+                        <a href="{{ books_dashboard_url }}">
+                            <i class="fa fa-home"></i>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <li class="header">Accounting</li>
+                    {% url 'books:estimate-list' as books_estimate_list_url %}
+                    {% url 'books:invoice-list' as books_invoice_list_url %}
+                    {% url 'books:bill-list' as books_bill_list_url %}
+                    {% url 'books:expense_claim-list' as books_exepense_claim_list_url %}
+                    {% url 'books:tax_rate-list' as books_tax_rate_list_url %}
+                    {% url 'books:item-list' as item_list_url %}
+                    <li class="{% if active_tab == 'estimate-list' %} active{% endif %}">
+                        <a href="{{ books_estimate_list_url }}">
+                            <i class="fa fa-files-o"></i>
+                            <span>Estimates</span>
+                        </a>
+                    </li>
+                    <li class="{% if active_tab == 'invoice-list' %} active{% endif %}">
+                        <a href="{{ books_invoice_list_url }}">
+                            <i class="fa fa-file"></i>
+                            <span>Invoice</span>
+                        </a>
+                    </li>
+                    <li class="{% if active_tab == 'bill-list' %} active{% endif %}">
+                        <a href="{{ books_bill_list_url }}">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span>Bills</span>
+                        </a>
+                    </li>
+                    <li class="{% if active_tab == 'expense_claim-list' %} active{% endif %}">
+                        <a href="{{ books_exepense_claim_list_url }}">
+                            <i class="fa fa-inr fa-lg"></i>
+                            <span>Expense Claims</span>
+                        </a>
+                    </li>
+                    <li class="{% if active_tab == 'item-list' %} active{% endif %}">
+                        <a href="{{ item_list_url }}">
+                            <i class="fa fa-inbox fa-lg"></i>
+                            <span>Items</span>
+                        </a>
+                    </li>
+                    <li class="{% if active_tab == 'tax_rate-list' %} active{% endif %}">
+                        <a href="{{ books_tax_rate_list_url }}">
+                            <i class="fa fa-money"></i>
+                            <span>Tax Rates</span>
+                        </a>
+                    </li>
+                    <li class="header">People</li>
+                    {% url 'people:client-list' as clients_client_list_url %}
+                    {% url 'people:employee-list' as employees_employee_list_url %}
+                    <li class="{% if active_tab == 'client-list' %} active{% endif %}">
+                        <a href="{{ clients_client_list_url }}">
+                            <i class="fa fa-users"></i>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                    <li class="{% if active_tab == 'employee-list' %} active{% endif %}">
+                        <a href="{{ employees_employee_list_url }}">
+                            <i class="fa fa-user"></i>
+                            <span>Employees</span>
+                        </a>
+                    </li>
+                    <li class="header">Settings</li>
+                    {% url 'reports:report-list' as reports_report_list_url %}
+                    <li class="{% if active_tab == 'report-list' %} active{% endif %}">
+                        <a href="{{ reports_report_list_url }}">
+                            <i class="fa fa-send"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    {% url 'reports:settings-list' as reports_settings_list_url %}
+                    <li class="{% if active_tab == 'settings-list' %} active{% endif %}">
+                        <a href="{{ reports_settings_list_url }}">
+                            <i class="fa fa-sliders"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        {% block container %}
+            <div class="content-wrapper">
+                <div class="container" style="min-height:700px">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        {% endblock container %}
+    </div>
+    {% endblock nav %}
+{% endblock maincontent %}
