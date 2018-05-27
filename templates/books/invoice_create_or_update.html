@@ -167,26 +167,28 @@
         });
 
         $("#id_lines-0-item").change(function () {
-            var end = $(this).val();
-            if (!isInt(end)) {
-                $("#id_id").val(end);
+            var id = $(this).val();
+            var startID = $(this).attr('id').replace("item", "");
+            console.log(startID);
+            if (!isInt(id)) {
+                $("#id_id").val(id);
                 return;
             }
             $.ajax({
                 type: "POST",
                 url: "{% url 'books:item-get-data' %}",
                 data: {
-                    "id": end,
+                    "id": id,
                 },
                 dataType: 'json',
                 success: function (data, status) {
-                    console.log("id: " + end);
-                    $("#id_lines-0-id").val(end);
-                    $("#id_lines-0-label").val(data.label);
-                    $("#id_lines-0-description").val(data.description);
-                    $("#id_lines-0-unit_price_excl_tax").val(data.unit_price_excl_tax);
-                    $("#id_lines-0-quantity").val(data.quantity);
-                    $("#id_lines-0-tax_rate").val(data.tax_rate);
+                    console.log("id: " + id);
+                    $("#" + startID + "id").val(id);
+                    // $("#" + startID + "label").val(data.label);
+                    $("#" + startID + "description").val(data.description);
+                    $("#" + startID + "unit_price_excl_tax").val(data.unit_price_excl_tax);
+                    $("#" + startID + "quantity").val(data.quantity);
+                    $("#" + startID + "tax_rate").val(data.tax_rate);
                 }
             });
         });
