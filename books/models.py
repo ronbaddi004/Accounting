@@ -385,7 +385,7 @@ class Invoice(AbstractSale):
 class InvoiceLine(AbstractSaleLine):
     invoice = models.ForeignKey('books.Invoice',
                                 related_name="lines")
-    item = models.ForeignKey('books.Item', default=1, null=True, blank=True)
+    item = models.ForeignKey('books.Item', null=True, blank=True)
     tax_rate = models.ForeignKey('books.TaxRate')
 
     class Meta:
