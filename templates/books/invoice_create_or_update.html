@@ -130,8 +130,8 @@
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script src="{% static 'js/books/invoice_or_bill_create.js' %}"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#id_client').select2();
+        $('#id_client').select2({
+            selectOnClose: true
         });
 
         function onchangeFn(selection) {
@@ -193,10 +193,7 @@
                 success: function (data, status) {
                     console.log("id: " + id);
                     $("#" + startID + "id").val(id);
-<<<<<<< HEAD
-=======
                     // $("#" + startID + "label").val(data.label);
->>>>>>> 43a79abbb24769658c1ef1bfada2c30b8181674b
                     $("#" + startID + "description").val(data.description);
                     $("#" + startID + "unit_price_excl_tax").val(data.unit_price_excl_tax);
                     $("#" + startID + "quantity").val(data.quantity);
