@@ -119,7 +119,7 @@ class TaxRate(models.Model):
     organization = models.ForeignKey('books.Organization',
                                      related_name="tax_rates",
                                      verbose_name="Attached to Organization")
-
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="TaxRate", default=1)
     name = models.CharField(max_length=50)
     rate = models.DecimalField(max_digits=6,
                                decimal_places=5,

@@ -195,9 +195,11 @@ class InvoiceForm(ModelForm):
 
 class InvoiceLineForm(RestrictLineFormToOrganizationMixin,
                       ModelForm):
+    id = forms.CharField(max_length=256)
     class Meta:
         model = InvoiceLine
         fields = (
+            "id",
             "label",
             "description",
             "unit_price_excl_tax",

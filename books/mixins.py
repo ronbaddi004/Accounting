@@ -131,6 +131,7 @@ class AbstractSaleCreateUpdateMixin(RestrictToOrganizationFormRelationsMixin,
     def form_valid(self, form):
         context = self.get_context_data()
         line_formset = context['line_formset']
+        print(line_formset)
         if not line_formset.is_valid():
             return super().form_invalid(form)
 

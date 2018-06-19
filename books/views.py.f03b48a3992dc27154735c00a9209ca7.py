@@ -543,17 +543,17 @@ class ItemUpdateView(generic.UpdateView):
     model = Item
 
     def user_passes_test(self, request):
-        if request.user.is_authenticated:
-            self.object = self.get_object()
-            return self.object.created_by == request.user
-        return False
+    if request.user.is_authenticated:
+        self.object = self.get_object()
+        return self.object.created_by == request.user
+    return False
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_superuser:
             return super(ItemUpdateView, self).dispatch(request, *args, **kwargs)
         elif not self.user_passes_test(request):
-            return redirect(reverse("books:item-list"))
+            return redirect("remitter_search")
         return super(ItemUpdateView, self).dispatch(request, *args, **kwargs)
 
     # def user_pass_test(self, request):

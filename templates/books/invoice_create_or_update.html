@@ -81,6 +81,10 @@
             </thead>
             <tbody>
             {% for line_form in line_formset %}
+                {{ line_form.non_form_errors }}
+                {% for hidden in line_form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
                 <tr class="formset-form">
                     <td class="col-md-0 counter">
                         {{ forloop.counter }}
@@ -89,18 +93,23 @@
                     <td class="col-md-2">
                         {% render_field line_form.item class="form-control" onchange='onchangeFn(this)' %}
                         {% render_field line_form.label class="form-control" type="hidden" %}
+                        <div class="invalid-feedback">{{ line_form.label.errors }}</div>
                     </td>
                     <td class="col-md-4">
                         {% bootstrap_field line_form.description show_label=False %}
+                        <div class="invalid-feedback">{{ line_form.description.errors }}</div>
                     </td>
                     <td class="col-md-2">
                         {% bootstrap_field line_form.unit_price_excl_tax show_label=False %}
+                        <div class="invalid-feedback">{{ line_form.unit_price_excl_tax.errors }}</div>
                     </td>
                     <td class="col-md-1">
                         {% bootstrap_field line_form.quantity show_label=False %}
+                        <div class="invalid-feedback">{{ line_form.quantity.errors }}</div>
                     </td>
                     <td class="col-md-1">
                         {% bootstrap_field line_form.tax_rate show_label=False %}
+                        <div class="invalid-feedback">{{ line_form.tax_rate.errors }}</div>
                     </td>
                     <td>{{ line_form.DELETE }}</td>
                 </tr>
@@ -129,7 +138,7 @@
             var id= $(selection).attr('id');
             var num = id.match(/\d+/)[0];
             var strlabel1 = selection.options[selection.selectedIndex].text;
-            $('#id_lines-' + num + '-label').val(strlabel1);
+            $('#id_lines-'+num+'-label').val(strlabel1);
         }
 
         var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
@@ -167,26 +176,27 @@
         });
 
         $("#id_lines-0-item").change(function () {
-            var end = $(this).val();
-            if (!isInt(end)) {
-                $("#id_id").val(end);
+            var id = $(this).val();
+            var startID = $(this).attr('id').replace("item", "");
+            console.log(startID);
+            if (!isInt(id)) {
+                $("#id_id").val(id);
                 return;
             }
             $.ajax({
                 type: "POST",
                 url: "{% url 'books:item-get-data' %}",
                 data: {
-                    "id": end,
+                    "id": id,
                 },
                 dataType: 'json',
                 success: function (data, status) {
-                    console.log("id: " + end);
-                    $("#id_lines-0-id").val(end);
-                    $("#id_lines-0-label").val(data.label);
-                    $("#id_lines-0-description").val(data.description);
-                    $("#id_lines-0-unit_price_excl_tax").val(data.unit_price_excl_tax);
-                    $("#id_lines-0-quantity").val(data.quantity);
-                    $("#id_lines-0-tax_rate").val(data.tax_rate);
+                    console.log("id: " + id);
+                    $("#" + startID + "id").val(id);
+                    $("#" + startID + "description").val(data.description);
+                    $("#" + startID + "unit_price_excl_tax").val(data.unit_price_excl_tax);
+                    $("#" + startID + "quantity").val(data.quantity);
+                    $("#" + startID + "tax_rate").val(data.tax_rate);
                 }
             });
         });
