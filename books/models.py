@@ -31,12 +31,12 @@ class Organization(models.Model):
     legal_name = models.CharField(max_length=150,
         help_text="Official name to appear on your reports, sales "
                   "invoices and bills")
-    address_line_1 = models.CharField(max_length=128)
+    address_line_1 = models.CharField(max_length=128, blank=True, null=True)
     address_line_2 = models.CharField(max_length=128,
                                       blank=True, null=True)
-    city = models.CharField(max_length=64)
-    postal_code = models.CharField(max_length=256)
-    country = models.CharField(max_length=50)
+    city = models.CharField(max_length=64, default=0, blank=False, null=False)
+    postal_code = models.CharField(max_length=256, default=1, blank=False, null=False)
+    country = models.CharField(max_length=50, default="India", blank=False, null=False)
     
     owner = models.ForeignKey(settings.AUTH_USER_MODEL,
                               related_name="owned_organizations")
@@ -359,7 +359,7 @@ class Invoice(AbstractSale):
     organization = models.ForeignKey('books.Organization',
                                      related_name="invoices",
                                      verbose_name="From Organization")
-    client = models.ForeignKey('people.Client',
+    client = models.ForeignKey('people.Client', default=1,
                                verbose_name="To Client")
     payments = GenericRelation('books.Payment')
 
