@@ -182,7 +182,7 @@ a:active,
 a:focus {
     outline: none;
     text-decoration: none;
-    color: #72afd2
+    color: rgb(44, 40, 40);
 }
 
 .page-header {
@@ -2007,7 +2007,7 @@ a:focus {
 }
 
 .box-header>.box-tools .dropdown-menu>li>a {
-    color: #444!important
+    color: #444 !important
 }
 
 .btn-box-tool {

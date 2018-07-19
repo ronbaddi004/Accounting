@@ -1,44 +1,38 @@
 {% load currency_filters status_filters %}
 
-<table id="datatable" class="table table-bordered table-striped" cellspacing="0" width="100%">
+<table id="datatable" class="table table-responsive table-bordered table-striped" cellspacing="0" width="100%" style="width: 1142px;border-right-width: 0px;border-left-width: 0px;">
     <thead>
-        <tr class="row">
-            <th>#</th>
-            <th>Name</th>
-            {% if detailed %}
-            <th>Description</th>
-            {% endif %}
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Tax Rate</th>
-            <th>Actions</th>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Tax Rate</th>
+            <th class="text-center">Actions</th>
         </tr>
     </thead>
     <tfoot>
-        <tr class="row">
-            <th>#</th>
-            <th>Name</th>
-            {% if detailed %}
-            <th>Description</th>
-            {% endif %}
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Tax Rate</th>
-            <th>Actions</th>
+        <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Tax Rate</th>
+            <th class="text-center">Actions</th>
         </tr>
     </tfoot>
     <tbody>
         {% for sale in sales %}
-        <tr class="row">
-            <td>{{ forloop.counter }}</td>
-            <td>{{ sale.name }}</td>
-            {% if detailed %}
-            <td>{{ sale.description }}</td>
-            {% endif %}
-            <td>{{ sale.unit_price_excl_tax|currency }}</td>
-            <td>{{ sale.quantity }}</td>
-            <td>{{ sale.tax_rate }}</td>
-            <td>
+        <tr>
+            <td class="text-center">{{ forloop.counter }}</td>
+            <td class="text-center">{{ sale.name }}</td>
+            <td class="text-center">{{ sale.description }}</td>
+            <td class="text-center">{{ sale.unit_price_excl_tax|currency }}</td>
+            <td class="text-center">{{ sale.quantity }}</td>
+            <td class="text-center">{{ sale.tax_rate }}</td>
+            <td class="text-center">
                 <a href="{% url 'books:item-delete' pk=sale.pk %}" class="btn btn-danger btn-sm" role="button">Delete</a>
                 {% if not hide_edit %}
                 <a href="{% url 'books:item-edit' pk=sale.pk %}" class="btn btn-default btn-sm" role="button">Edit</a>

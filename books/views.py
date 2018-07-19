@@ -4,6 +4,7 @@ from decimal import Decimal as D
 from . import forms
 
 from django.views import generic
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout_then_login
 from django.core import serializers
@@ -144,6 +145,9 @@ class OrganizationCreateView(generic.CreateView):
         obj.owner = self.request.user
         return super().form_valid(form)
 
+    def users(self):
+        return User.objects.all()
+
 
 class OrganizationUpdateView(generic.UpdateView):
     template_name = "books/organization_create_or_update.html"
@@ -154,6 +158,9 @@ class OrganizationUpdateView(generic.UpdateView):
     def get_queryset(self):
         # only current authenticated user organizations
         return organization_manager.get_user_organizations(self.request.user)
+
+    def users(self):
+        return User.objects.all()
 
 
 class OrganizationDetailView(generic.DetailView):

@@ -2,22 +2,22 @@
 
 <table id="datatable" class="table table-striped">
     <thead>
-        <tr class="row">
-            <th>#</th>
-            <th>Paid by employee</th>
-            <th>On</th>
-            <th class="col-sm-2">Total</th>
-            <th class="text-right col-sm-4">Actions</th>
+        <tr style="margin-left: 0px; margin-right: 0px;">
+            <th class="text-center">#</th>
+            <th class="text-center">Paid by employee</th>
+            <th class="text-center">On</th>
+            <th class="text-center">Total</th>
+            <th class="text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for sale in sales %}
-        <tr class="row {{ sale|status_to_css_classname }}">
-            <td>{{ sale.number }}</td>
-            <td>{{ sale.employee }}</td>
-            <td>{{ sale.date_issued }}</td>
-            <td class="col-sm-2">{{ sale.total_excl_tax|currency }}</td>
-            <td class="text-right col-sm-4">
+        <tr class="{{ sale|status_to_css_classname }}" style="margin-left: 0px; margin-right: 0px;">
+            <td class="text-center">{{ sale.number }}</td>
+            <td class="text-center">{{ sale.employee }}</td>
+            <td class="text-center">{{ sale.date_issued }}</td>
+            <td class="text-center">{{ sale.total_excl_tax|currency }}</td>
+            <td class="text-center">
                 <a href="{{ sale.get_detail_url }}" class="btn btn-success btn-sm" role="button">View</a>
                 {% if not hide_edit %}
                 <a href="{{ sale.get_edit_url }}" class="btn btn-default btn-sm" role="button">Edit</a>

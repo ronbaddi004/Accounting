@@ -6,6 +6,7 @@ from books.mixins import (
     AutoSetSelectedOrganizationMixin)
 from .models import Client, Employee
 from .forms import ClientForm, EmployeeForm
+from books.utils import organization_manager
 
 
 class ClientListView(RestrictToSelectedOrganizationQuerySetMixin,

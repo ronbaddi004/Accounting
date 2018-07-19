@@ -13,12 +13,42 @@
         <h1 class="page-header">Create a {{ form|get_form_model_verbose_name }}</h1>
     {% endif %}
 
-    <form action="." method="post" class="form">
+    <form action="." method="post" class="form" style="padding-bottom: 20px">
         {% csrf_token %}
 
-        {% include "includes/form.html" with form=form %}
-            
-
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for error in form.non_field_errors %}
+            <p {% if forloop.last %} class="mb-0" {% endif %}>{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {{ form.display_name.label_tag }}
+        {% render_field form.display_name class="form-control" %}
+        {{ form.legal_name.label_tag }}
+        {% render_field form.legal_name class="form-control" %}
+        {{ form.address_line_1.label_tag }}
+        {% render_field form.address_line_1 class="form-control" %}
+        {{ form.address_line_2.label_tag }}
+        {% render_field form.address_line_2 class="form-control" %}
+        {{ form.city.label_tag }}
+        {% render_field form.city class="form-control" %}
+        {{ form.postal_code.label_tag }}
+        {% render_field form.postal_code class="form-control" %}
+        {{ form.country.label_tag }}
+        {% render_field form.country class="form-control" %}
+        {{ form.members.label_tag}}
+        <select class="form-control" multiple="multiple" id="id_members" name="members">
+            {% if form.members.value %}
+                <option value="{{ form.members.value }}">{{form.members.value}}</option>
+            {% endif %}
+            {% for user in view.users %}
+                <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <div class="invalid-feedback">{{ form.members.errors }}</div>
         {% buttons %}
             <button type="submit" class="btn btn-success">
                 {% if object.pk %}

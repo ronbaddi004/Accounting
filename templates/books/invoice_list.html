@@ -1,10 +1,45 @@
 {% extends "layout.html" %}
-{% load currency_filters %}
+{% load currency_filters status_filters %}
 
 {% block content %}
     <h1 class="page-header">Invoices <small>which belong to you</small></h1>
-
-    {% include "books/_generics/sale_list.html" with sales=invoices detailed=True %}
+    
+    <table id="datatable" class="table table-responsive table-bordered table-striped" style="width: 100%" style="width: 1142px;border-right-width: 0px;border-left-width: 0px;">
+        <thead>
+            <tr style="margin-left: 0px; margin-right: 0px;">
+                <th class="text-center">#</th>
+                <th class="text-center">From Organization</th>
+                <th class="text-center">To Client</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr style="margin-left: 0px; margin-right: 0px;">
+                <th class="text-center">#</th>
+                <th class="text-center">From Organization</th>
+                <th class="text-center">To Client</th>
+                <th class="text-center">Total</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for sale in invoices %}
+            <tr style="margin-left: 0px; margin-right: 0px;">
+                <td class="text-center">{{ sale.number }}</td>
+                <td class="text-center">{{ sale.organization }}</td>
+                <td class="text-center">{{ sale.client }}</td>
+                <td class="text-center">{{ sale.total_excl_tax|currency }}</td>
+                <td class="text-center">
+                    <a href="{{ sale.get_detail_url }}" class="btn btn-success btn-sm" role="button">View</a>
+                    {% if not hide_edit %}
+                    <a href="{{ sale.get_edit_url }}" class="btn btn-default btn-sm" role="button">Edit</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <a href="{% url 'books:invoice-create' %}" class="btn btn-primary btn-lg" role="button">
         Add an invoice

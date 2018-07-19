@@ -16,8 +16,10 @@
             <div class="form-group col-sm-12 col-md-12">
                 <label for="id_number">Number:</label>
                 {% if form.number.value %}
-                <input type="number" name="number" maxlength="256" value="{{form.number.value}}" class="form-control {% if form.number.errors %}is-invalid{% else%}is-valid{% endif %}"
-                    required id="id_number" /> {% else %} {{ form.number|add_class:"form-control" }} {% endif %}
+                    <input type="number" name="number" maxlength="256" value="{{form.number.value}}" class="form-control {% if form.number.errors %}is-invalid{% else%}is-valid{% endif %}" required id="id_number" />
+                {% else %}
+                    {{ form.number|add_class:"form-control" }}
+                {% endif %}
                 <div class="invalid-feedback">{{ form.number.errors }}</div>
             </div>
             <div class="form-group col-sm-12 col-md-12">
@@ -79,23 +81,23 @@
             <tbody>
             {% for line_form in line_formset %}
                 <tr class="formset-form">
-                    <td class="col-md-0 counter">
+                    <td class="counter">
                         {{ forloop.counter }}
                         {{ line_form.id }}
                     </td>
-                    <td class="col-md-2">
+                    <td>
                         {% bootstrap_field line_form.label show_label=False %}
                     </td>
-                    <td class="col-md-4">
+                    <td>
                         {% bootstrap_field line_form.description show_label=False %}
                     </td>
-                    <td class="col-md-2">
+                    <td>
                         {% bootstrap_field line_form.unit_price_excl_tax show_label=False %}
                     </td>
-                    <td class="col-md-1">
+                    <td>
                         {% bootstrap_field line_form.quantity show_label=False %}
                     </td>
-                    <td class="col-md-1">
+                    <td>
                         {% bootstrap_field line_form.tax_rate show_label=False %}
                     </td>
                     <td></td>
